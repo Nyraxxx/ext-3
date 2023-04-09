@@ -80,6 +80,7 @@ printf("num = %u \n", num);
     uint32_t movetofront = storeend << 31;
     uint32_t firstshift = num >> 1;
     uint32_t addbitback = firstshift | movetofront;
+    printf("final= %u \n", addbitback);
     //printf("first %u", state);
     //printf("\n");
     //printf("after %u", addbitback);
@@ -88,13 +89,15 @@ printf("num = %u \n", num);
    if (num == 0xFFFFFFF)
    {
     num = num;
+    printf("num = %u \n", num);
     }
    else if (testcond == 1)
     {
     storeend = num & endbit;
-    movetofront = storeend << 7;
+    movetofront = storeend << 31;
     firstshift = num >> 1;
     addbitback = firstshift | movetofront;
+    printf("finalloop= %u \n", addbitback);
    
     }
 
