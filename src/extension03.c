@@ -84,7 +84,7 @@ int main(void)
        do{ 
         // rotation
         //  isolate lsb
-        uint32_t lsb = state & 0x01;
+        uint32_t lsb = state & 1;
 
         // right shift state once
         state = state >> 1;
