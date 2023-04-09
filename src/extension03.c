@@ -103,7 +103,8 @@ int main(void)
         uint32_t shiftbits = state >> 4;
 
         uint32_t msn = shiftbits >> 4;
-        uint32_t lsn = shiftbits << 4;
+        msn = msn & 0xF;
+        uint32_t lsn = shiftbits & 0xF;
 
 
 
