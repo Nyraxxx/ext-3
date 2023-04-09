@@ -69,28 +69,42 @@
 //
 //   Assume that after step 4b "state" holds the value 0x11111780
 //     The programme should print the line: 1780 foobar    
-
+uint32_t rotate(uint32_t num)
+{
+//rotat ur code
+    uint32_t endbit = 00000001;
+    uint32_t storeend = num & endbit;
+    uint32_t movetofront = storeend << 7;
+    uint32_t firstshift = num >> 1;
+    uint32_t addbitback = firstshift | movetofront;
+    //printf("first %u", state);
+    //printf("\n");
+    //printf("after %u", addbitback);
+    //printf("\n");
+    return(addbitback);
+}
 
 int main(void) {
 // Write your code for Ex E3.0 below this line.
 // You will also need to add some preprocessor directives;
 // these would typically go at the top of the file.
 serial_init();
-uint16_t state = 11079606;
+uint32_t state = 12345678;
 
 for (uint16_t i = 0; i < 255; i ++)
 {
     state = i ^ state;
 
-    //rotat ur code
-    uint16_t endbit = 00000001;
-    uint16_t storeend = state & endbit;
-    uint16_t movetofront = storeend << 7;
-    uint16_t firstshift = state >> 1;
-    uint16_t addbitback = firstshift | movetofront;
-    printf("first %u", state);
-    printf("\n");
-    printf("after %u", addbitback);
+    state = rotate(state);
+    printf("4b = %u \n", state);
+    
+    uint32_t LSB = 00001111;
+    uint32_t printlsb = state & LSB;
+    printf("%04X ", printlsb);
+
+
+
+
 
 }
     
