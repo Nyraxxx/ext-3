@@ -129,7 +129,7 @@ for (uint8_t i = 0; i < 255; i ++)
     uint32_t nibmasklsb = 0x0F0;
     uint32_t maskout2 = nibmasklsb & checkmask;
 
-    if (( nibmaskout == 0) &&)(maskout2 = 6))
+    if (( nibmaskout == 0) &&(maskout2 == 6))
     {
         printf("foobar");
     }
@@ -137,7 +137,7 @@ for (uint8_t i = 0; i < 255; i ++)
     {
         printf("foo");
     }
-    else if (maskout2 = 6)
+    else if (maskout2 == 6)
     {
        printf("bar");
     }
