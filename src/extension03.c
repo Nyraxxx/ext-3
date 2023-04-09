@@ -103,7 +103,7 @@ printf("num = %u \n", num);
 
 
 
-retrun(addbitback);
+return(addbitback);
 }
 
 int main(void) {
