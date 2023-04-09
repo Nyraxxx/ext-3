@@ -80,7 +80,8 @@ int main(void)
 
     for (uint8_t i = 0; i < 255; i++)
     {
-       do{ state = i ^ state;
+       state = i ^ state;
+       do{ 
         // rotation
         //  isolate lsb
         uint32_t lsb = state & 0x01;
