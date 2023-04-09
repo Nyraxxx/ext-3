@@ -76,47 +76,27 @@ int main(void)
     // You will also need to add some preprocessor directives;
     // these would typically go at the top of the file.
     serial_init();
-    uint32_t state = 0x11079606;
+    uint32_t state = 11079606;
 
     for (uint8_t i = 0; i < 255; i++)
     {
-       state = i ^ state;
-       do{ 
-        // rotation
-        //  isolate lsb
-        uint32_t lsb = state & 1;
+        state = i ^ state;
+        do
+        {
+            // rotation
+            //  isolate lsb
+            uint32_t lsb = state & 1;
 
-        // right shift state once
-        state = state >> 1;
+            // right shift state once
+            state = state >> 1;
 
-        // somehow move lsb into msb
-        uint32_t lsbTOmsb = lsb << 31;
-        state = lsbTOmsb | state;
-        
-       }
-        while ((1 & state) == 1);
-        //
-//
-         //   if (state == 0xFFFFFFF)
-         //   {
-         //       break;
-         //   }
-         //   else
-         //   {
-         //       // rotation
-         //       // isolate lsb
-         //       uint32_t lsb = state & 0x01;
-//
-         //       // right shift state once
-         //       state = state >> 1;
-//
-         //       // somehow move lsb into msb
-         //       uint32_t lsbTOmsb = lsb << 31;
-         //       state = lsbTOmsb | state;
-         //   }
-        
+            // somehow move lsb into msb
+            uint32_t lsbTOmsb = lsb << 31;
+            state = lsbTOmsb | state;
 
-        uint32_t LSB = 0xFF;
+        } while ((1 & state) == 1);
+
+        uint32_t LSB = 0xFFFF;
         uint32_t printlsb = state & LSB;
         printf("%04lX ", printlsb);
 
