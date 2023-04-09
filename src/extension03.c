@@ -74,9 +74,9 @@ uint32_t rotate(uint32_t num)
 //rotat ur code
 
 //do it once, this is janky I know
-    uint32_t endbit = 0x80000001;
+    uint32_t endbit = 0x1;
     uint32_t storeend = num & endbit;
-    uint32_t movetofront = storeend << 7;
+    uint32_t movetofront = storeend << 31;
     uint32_t firstshift = num >> 1;
     uint32_t addbitback = firstshift | movetofront;
     //printf("first %u", state);
@@ -84,7 +84,7 @@ uint32_t rotate(uint32_t num)
     //printf("after %u", addbitback);
     //printf("\n");
     uint32_t testcond = num & endbit;
-   if (num == 0x8FFFFFFFF)
+   if (num == 0xFFFFFFF)
    {
     num = num;
     }
