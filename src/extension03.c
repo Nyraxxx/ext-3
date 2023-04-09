@@ -94,7 +94,7 @@ int main(void)
             uint32_t lsbTOmsb = lsb << 31;
             state = lsbTOmsb | state;
 
-        } while ((1 & state) == 1);
+        } while (((1 & state) == 1)&& (state != 0xFFFF));
 
         uint32_t LSB = 0xFFFF;
         uint32_t printlsb = state & LSB;
