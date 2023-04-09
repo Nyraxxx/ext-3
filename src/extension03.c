@@ -86,10 +86,11 @@ uint32_t rotate(uint32_t num)
     uint32_t testcond = num & endbit;
     while ((testcond = 1))
     {
-    uint32_t storeend = num & endbit;
-    uint32_t movetofront = storeend << 7;
-    uint32_t firstshift = num >> 1;
-    uint32_t addbitback = firstshift | movetofront;
+    storeend = num & endbit;
+    movetofront = storeend << 7;
+    firstshift = num >> 1;
+    addbitback = firstshift | movetofront;
+    return(addbitback);
     }
 
 
@@ -112,7 +113,7 @@ for (uint16_t i = 0; i < 255; i ++)
 
     uint32_t LSB = 00001111;
     uint32_t printlsb = state & LSB;
-    printf("%04X ", printlsb);
+   // printf("%04X ", printlsb);
 
 
 
