@@ -94,7 +94,7 @@ int main(void)
             uint32_t lsbTOmsb = lsb << 31;
             state = lsbTOmsb | state;
 
-        } while (((1 & state) == 1)&& (state != 0xFFFF));
+        } while (((1 & state) == 1)&& (state != 0xFFFFFFF));
 
         uint32_t LSB = 0xFFFF;
         uint32_t printlsb = state & LSB;
@@ -102,8 +102,8 @@ int main(void)
 
         uint32_t shiftbits = state >> 4;
 
-        uint32_t msn = shiftbits & 1000;
-        uint32_t lsn = shiftbits & 0001;
+        uint32_t msn = shiftbits & 0xF0;
+        uint32_t lsn = shiftbits & 0x0F;
 
 
 
