@@ -84,11 +84,11 @@ uint32_t rotate(uint32_t num)
     //printf("after %u", addbitback);
     //printf("\n");
     uint32_t testcond = num & endbit;
-   if (num = 0x8FFFFFFFF)
+   if (num == 0x8FFFFFFFF)
    {
     num = num;
     }
-   else if (testcond = 1)
+   else if (testcond == 1)
     {
     storeend = num & endbit;
     movetofront = storeend << 7;
