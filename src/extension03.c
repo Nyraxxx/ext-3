@@ -72,6 +72,8 @@
 uint32_t rotate(uint32_t num)
 {
 //rotat ur code
+
+//do it once, this is janky I know
     uint32_t endbit = 00000001;
     uint32_t storeend = num & endbit;
     uint32_t movetofront = storeend << 7;
@@ -81,6 +83,16 @@ uint32_t rotate(uint32_t num)
     //printf("\n");
     //printf("after %u", addbitback);
     //printf("\n");
+    uint32_t testcond = num & endbit;
+    while ((testcond = 1))
+    {
+    uint32_t storeend = num & endbit;
+    uint32_t movetofront = storeend << 7;
+    uint32_t firstshift = num >> 1;
+    uint32_t addbitback = firstshift | movetofront;
+    }
+
+
     return(addbitback);
 }
 
@@ -97,7 +109,7 @@ for (uint16_t i = 0; i < 255; i ++)
 
     state = rotate(state);
     printf("4b = %u \n", state);
-    
+
     uint32_t LSB = 00001111;
     uint32_t printlsb = state & LSB;
     printf("%04X ", printlsb);
