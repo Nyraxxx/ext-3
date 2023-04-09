@@ -78,7 +78,7 @@ int main(void)
     serial_init();
     uint32_t state = 11079606;
 
-    for (uint8_t i = 0; i <= 255; i++)
+    for (uint8_t i = 0; i < 256; i++)
     {
         state = i ^ state;
         do
