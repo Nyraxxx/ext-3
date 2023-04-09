@@ -69,52 +69,84 @@
 //
 //   Assume that after step 4b "state" holds the value 0x11111780
 //     The programme should print the line: 1780 foobar    
-uint32_t rotate(uint32_t num)
-{
-//rotat ur code
-
-    uint32_t firstshift = num >> 1;
-    uint32_t getendbit = num << 31;
-    uint16_t rotatedbit = firstshift | getendbit;
-
-
-    uint32_t lsb = num >> 31;
-
-    uint32_t testcond = num & lsb;
-  while (testcond == 1){
-  
-   if (num == 0xFFFFFFF)
-   {
-    break;
- 
-    }
-   else
-    {
-        //go again
-    uint32_t firstshift = num >> 1;
-    uint32_t getendbit = num << 31;
-    uint16_t rotatedbit = firstshift | getendbit;
-   
-    }
-
-  }
-
-return(rotatedbit);
-}
+//uint32_t rotate(uint32_t num)
+//{
+////rotat ur code
+//
+//    uint32_t firstshift = num >> 1;
+//    uint32_t getendbit = num << 31;
+//    uint16_t rotatedbit = firstshift | getendbit;
+//
+//
+//    uint32_t lsb = num >> 31;
+//
+//    uint32_t testcond = num & lsb;
+//  while (testcond == 1){
+//  
+//   if (num == 0xFFFFFFF)
+//   {
+//    break;
+// 
+//    }
+//   else
+//    {
+//        //go again
+//    uint32_t firstshift = num >> 1;
+//    uint32_t getendbit = num << 31;
+//    uint16_t rotatedbit = firstshift | getendbit;
+//   
+//    }
+//
+//  }
+//
+//return(rotatedbit);
+//}
 
 int main(void) {
 // Write your code for Ex E3.0 below this line.
 // You will also need to add some preprocessor directives;
 // these would typically go at the top of the file.
 serial_init();
-uint32_t state = 0x12345678;
+uint32_t state = 0x11079606;
 
 for (uint8_t i = 0; i < 255; i ++)
 {
     state = i ^ state;
-
-    state = rotate(state);
+    //rotation
+    // isolate lsb
+    uint32_t lsb = state & 0x01;
     
+    // right shift state once
+    state = state >> 1;
+
+    // somehow move lsb into msb
+    uint32_t lsbTOmsb = lsb << 31;
+    state = lsbTOmsb | state;
+    uint32_t testcond = lsb & state;
+ while (testcond = 1){
+    
+   if (state == 0xFFFFFFF)
+   {
+    break;
+ 
+    }
+   else
+    {
+        //rotation
+    // isolate lsb
+    uint32_t lsb = state & 0x01;
+    
+    // right shift state once
+    state = state >> 1;
+
+    // somehow move lsb into msb
+    uint32_t lsbTOmsb = lsb << 31;
+    state = lsbTOmsb | state;
+   
+    }
+
+  }
+ 
 
     uint32_t LSB = 0xFF;
     uint32_t printlsb = state & LSB;
