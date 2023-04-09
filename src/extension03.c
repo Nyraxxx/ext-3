@@ -78,7 +78,7 @@ int main(void)
     serial_init();
     uint32_t state = 11079606;
 
-    for (uint8_t i = 0; i < 256; i++)
+    for (uint16_t i = 0; i < 256; i++)
     {
         state = i ^ state;
         do
@@ -94,12 +94,7 @@ int main(void)
             uint32_t lsbTOmsb = lsb << 31;
             state = lsbTOmsb | state;
 
-            if (state != 0xFFFFFFFF)
-            {
-                break;
-            }
-
-        } while (((1 & state) == 1));
+        } while (((1 & state) == 1) && (state != 0xFFFFFFFF));
 
         uint32_t LSB = 0xFFFF;
         uint32_t printlsb = state & LSB;
