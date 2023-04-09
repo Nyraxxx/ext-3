@@ -1,4 +1,6 @@
 #include <avr/io.h>
+#include <stdio.h>
+#include <qutyio.h>
 
 // Ex E3.0
 //
@@ -68,11 +70,28 @@
 //   Assume that after step 4b "state" holds the value 0x11111780
 //     The programme should print the line: 1780 foobar    
 
+
 int main(void) {
 // Write your code for Ex E3.0 below this line.
 // You will also need to add some preprocessor directives;
 // these would typically go at the top of the file.
+serial_init();
+uint16_t state = 11079606;
 
+for (uint16_t i = 0; i < 255; i ++)
+{
+    state = i ^ state;
+
+    //rotat ur code
+    uint16_t endbit = 00000001;
+    uint16_t storeend = state & endbit;
+    uint16_t movetofront = storeend << 7;
+    uint16_t firstshift = state >> 1;
+    uint16_t addbitback = firstshift | storeend;
+    printf("first", state);
+    printf("after" ,addbitback);
+
+}
     
 
 // END OF EXTENSION03 EXERCISES //
