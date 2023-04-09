@@ -100,24 +100,22 @@ int main(void)
         uint32_t printlsb = state & LSB;
         printf("%04lX ", printlsb);
 
-        uint32_t bitmask = 0xFF0;
-        uint32_t checkmask = bitmask & state;
+        uint32_t shiftbits = state >> 4;
 
-        uint32_t nibblemask = 0xF00;
-        uint32_t nibmaskout = checkmask & nibblemask;
+        uint32_t msn = shiftbits >> 4;
+        uint32_t lsn = shiftbits << 4;
 
-        uint32_t nibmasklsb = 0x0F0;
-        uint32_t maskout2 = nibmasklsb & checkmask;
 
-        if ((nibmaskout == 0) && (maskout2 == 6))
+
+        if ((msn == 0) && (lsn == 6))
         {
             printf("foobar");
         }
-        else if (nibmaskout == 0)
+        else if (msn == 0)
         {
             printf("foo");
         }
-        else if (maskout2 == 6)
+        else if (lsn == 6)
         {
             printf("bar");
         }
