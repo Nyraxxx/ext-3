@@ -72,9 +72,11 @@
 uint32_t rotate(uint32_t num)
 {
 //rotat ur code
+    printf("num = %u \n", num);
     uint32_t firstshift = num >> 1;
     uint32_t getendbit = num << 31;
     uint16_t rotatedbit = firstshift | getendbit;
+    printf("first rotate = %u \n", rotatedbit);
 
     uint32_t lsb = num >> 31;
 
@@ -92,7 +94,7 @@ uint32_t rotate(uint32_t num)
     uint32_t firstshift = num >> 1;
     uint32_t getendbit = num << 31;
     uint16_t rotatedbit = firstshift | getendbit;
-   
+   printf("rotate again = %u \n", rotatedbit);
     }
 
   }
