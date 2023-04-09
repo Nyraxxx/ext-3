@@ -72,38 +72,32 @@
 uint32_t rotate(uint32_t num)
 {
 //rotat ur code
-
-//do it once, this is janky I know
-printf("num = %u \n", num);
-    uint32_t endbit = 0x1;
-    uint32_t storeend = num & endbit;
-    uint32_t movetofront = storeend << 31;
     uint32_t firstshift = num >> 1;
-    uint32_t addbitback = firstshift | movetofront;
-    printf("final= %u \n", addbitback);
-    //printf("first %u", state);
-    //printf("\n");
-    //printf("after %u", addbitback);
-    //printf("\n");
-    uint32_t testcond = num & endbit;
+    uint32_t getendbit = num << 31;
+    uint16_t rotatedbit = firstshift | getendbit;
+
+    uint32_t lsb = num >> 31;
+
+    uint32_t testcond = num & lsb;
+  while (testcond == 1){
+  
    if (num == 0xFFFFFFF)
    {
-    num = num;
+    break;
     printf("num = %u \n", num);
     }
-   else if (testcond == 1)
+   else
     {
-    storeend = num & endbit;
-    movetofront = storeend << 31;
-    firstshift = num >> 1;
-    addbitback = firstshift | movetofront;
-    printf("finalloop= %u \n", addbitback);
+        //go again
+    uint32_t firstshift = num >> 1;
+    uint32_t getendbit = num << 31;
+    uint16_t rotatedbit = firstshift | getendbit;
    
     }
 
+  }
 
-
-return(addbitback);
+return(rotatedbit);
 }
 
 int main(void) {
