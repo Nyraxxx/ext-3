@@ -107,7 +107,7 @@ int main(void) {
 // You will also need to add some preprocessor directives;
 // these would typically go at the top of the file.
 serial_init();
-uint32_t state = 12345678;
+uint32_t state = 0x12345678;
 
 for (uint8_t i = 0; i < 255; i ++)
 {
@@ -116,11 +116,34 @@ for (uint8_t i = 0; i < 255; i ++)
     state = rotate(state);
     printf("4b = %u \n", state);
 
-    uint32_t LSB = 0x800001111;
+    uint32_t LSB = 0xFF;
     uint32_t printlsb = state & LSB;
-   // printf("%04X ", printlsb);
+   printf("%04lX ", printlsb);
 
+    uint32_t bitmask = 0xFF0;
+    uint32_t checkmask = bitmask & state;
 
+    uint32_t nibblemask =  0xF00;
+    uint32_t nibmaskout = checkmask & nibblemask;
+
+    uint32_t nibmasklsb = 0x0F0;
+    uint32_t maskout2 = nibmasklsb & checkmask;
+
+    if (( nibmaskout == 0) &&)(maskout2 = 6))
+    {
+        printf("foobar");
+    }
+    else if ( nibmaskout == 0)
+    {
+        printf("foo");
+    }
+    else if (maskout2 = 6)
+    {
+       printf("bar");
+    }
+    
+
+    printf("\n");
 
 
 
