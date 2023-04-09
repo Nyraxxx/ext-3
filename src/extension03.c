@@ -123,7 +123,7 @@ for (uint8_t i = 0; i < 255; i ++)
     uint32_t lsbTOmsb = lsb << 31;
     state = lsbTOmsb | state;
     uint32_t testcond = lsb & state;
- while (testcond = 1){
+ while (testcond == 1){
     
    if (state == 0xFFFFFFF)
    {
