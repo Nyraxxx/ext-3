@@ -74,6 +74,7 @@ uint32_t rotate(uint32_t num)
 //rotat ur code
 
 //do it once, this is janky I know
+printf("num = %u \n", num);
     uint32_t endbit = 0x1;
     uint32_t storeend = num & endbit;
     uint32_t movetofront = storeend << 31;
