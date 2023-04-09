@@ -87,7 +87,7 @@ for (uint16_t i = 0; i < 255; i ++)
     uint16_t storeend = state & endbit;
     uint16_t movetofront = storeend << 7;
     uint16_t firstshift = state >> 1;
-    uint16_t addbitback = firstshift | storeend;
+    uint16_t addbitback = firstshift | movetofront;
     printf("first", state);
     printf("after" ,addbitback);
 
